@@ -51,11 +51,7 @@ export class dataPointSettings {
   public fillRule: string = "";
   // Text Size
   public fontSize: number = 12;
-<<<<<<< HEAD
    // them
-=======
-
->>>>>>> 0bd8048db9d5413e90f63d8050c623304c429700
   public theme: string = "dark";
 }
 
