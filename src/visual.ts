@@ -25,7 +25,7 @@
 */
 "use strict";
 
-import "core-js/stable"; 
+import "core-js/stable";
 import "./../style/visual.less";
 import powerbi from "powerbi-visuals-api";
 import VisualConstructorOptions = powerbi.extensibility.visual.VisualConstructorOptions;
@@ -45,6 +45,7 @@ import * as echarts from 'echarts';
 import DataViewCategorical = powerbi.DataViewCategorical;
 import DataViewValueColumnGroup = powerbi.DataViewValueColumnGroup;
 import PrimitiveValue = powerbi.PrimitiveValue;
+import { $ } from '../assets/js/jquery-3.3.1.min.js';
 
 export class Visual implements IVisual {
     private target: HTMLElement;
@@ -69,7 +70,7 @@ export class Visual implements IVisual {
         }
 
         this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
-        this.target.innerHTML = `<div id='echarts' class='echarts' name='echarts' style='width: 100%;height: 100%;text-align: center;'>123</div>`;
+        this.target.innerHTML = `<div id='echarts' class='echarts' name='echarts' style='width: 100%;height: 100%;text-align: center;'>自定义视觉对象</div>`;
 
 
 
@@ -100,8 +101,24 @@ export class Visual implements IVisual {
 
         //绘制图表
         const ec = echarts as any;
-        var myChart = ec.init(document.getElementById('echarts'), this.settings.dataPoint.theme);
+        // try{
 
+        //         $.getJSON('./../assets/vintage.project.json', function (themeJSON) {
+        //             echarts.registerTheme('vintage', JSON.parse(themeJSON))
+        //             console.log(themeJSON);
+        //             this.target.innerHTML = themeJSON;
+        //             // var chart = echarts.init(dom, 'vintage');
+        //         });
+        //     }
+        //     catch(ex)
+        //     { 
+        //         this.target.innerHTML = ex;
+        //     }
+
+        let colorname = this.settings.myproperties.theme;
+        echarts.registerTheme(colorname, JSON.parse(this.settings.myproperties.getthemecolor(colorname)))
+
+        var myChart = ec.init(document.getElementById('echarts'), colorname);
         // const singleDataView: DataViewSingle = dataView.single;
         // const dataViewcategorical:DataViewCategorical=dataView.categorical;
         try {
@@ -150,7 +167,7 @@ export class Visual implements IVisual {
             );
         }
         catch (ex) {
-            this.target.innerHTML = ex;
+            // this.target.innerHTML = ex;
         }
     }
 

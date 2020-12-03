@@ -16,9 +16,25 @@
             "kind": "Grouping"
         }
     ],
+    "drilldown": {
+        "roles": [
+            "category"
+        ]
+    },
     "objects": {
-        "dataPoint": {
-            "displayName": "Data colors",
+        "general": {
+            "displayName": "General",
+            "displayNameKey": "formattingGeneral",
+            "properties": {
+                "filter": {
+                    "type": {
+                        "filter": true
+                    }
+                }
+            }
+        },
+        "myproperties": {
+            "displayName": "自定义属性",
             "properties": {
                 "defaultColor": {
                     "displayName": "Default color",
@@ -31,18 +47,50 @@
                     }
                 },
                 "theme": {
-                    "displayName": "主题样式",
+                    "displayName": "主题颜色",
                     "type": {
                         "enumeration": [
                             {
-                                "displayName": "Light",
-                                "value": "light"
+                                "displayName": "Infographic",
+                                "value": "infographic"
+                            },
+                            {
+                                "displayName": "Chalk",
+                                "value": "chalk"
+                            },
+                            {
+                                "displayName": "Vintage",
+                                "value": "vintage"
                             },
                             {
                                 "displayName": "Dark",
                                 "value": "dark"
+                            },
+                            {
+                                "displayName": "Walden",
+                                "value": "walden"
+                            },
+                            {
+                                "displayName": "Roma",
+                                "value": "roma"
+                            },
+                            {
+                                "displayName": "Shine",
+                                "value": "shine"
                             }
                         ]
+                    }
+                },
+                "showtoolbox":{
+                    "displayName": "显示工具条",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "showlegend":{
+                    "displayName": "显示图例",
+                    "type": {
+                        "bool": true
                     }
                 },
                 "showAllDataPoints": {
@@ -80,6 +128,23 @@
     },
     "dataViewMappings": [
         {
+            "conditions": [
+                {
+                    "category": {
+                        "max": 2
+                    }
+                },
+                {
+                    "measure": {
+                        "max": 1
+                    }
+                },
+                {
+                    "series": {
+                        "max": 1
+                    }
+                }
+            ],
             "categorical": {
                 "categories": {
                     "for": {
@@ -102,6 +167,6 @@
         }
     ],
     "sorting": {
-        "default": {   }
+        "default": {}
     }
 }
