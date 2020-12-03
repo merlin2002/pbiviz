@@ -45,7 +45,6 @@ import * as echarts from 'echarts';
 import DataViewCategorical = powerbi.DataViewCategorical;
 import DataViewValueColumnGroup = powerbi.DataViewValueColumnGroup;
 import PrimitiveValue = powerbi.PrimitiveValue;
-import { $ } from '../assets/js/jquery-3.3.1.min.js';
 
 export class Visual implements IVisual {
     private target: HTMLElement;
@@ -70,7 +69,7 @@ export class Visual implements IVisual {
         }
 
         this.settings = Visual.parseSettings(options && options.dataViews && options.dataViews[0]);
-        this.target.innerHTML = `<div id='echarts' class='echarts' name='echarts' style='width: 100%;height: 100%;text-align: center;'>自定义视觉对象</div>`;
+        this.target.innerHTML = `<div id='echarts' class='echarts' name='echarts' style='width: 100%;height: 100%;text-align: center;'></div>`;
 
 
 
@@ -118,16 +117,22 @@ export class Visual implements IVisual {
         let colorname = this.settings.myproperties.theme;
         echarts.registerTheme(colorname, JSON.parse(this.settings.myproperties.getthemecolor(colorname)))
 
-        var myChart = ec.init(document.getElementById('echarts'), colorname);
+        var myChart = ec.init(document.getElementById('echarts'), null, { renderer: 'svg' });
         // const singleDataView: DataViewSingle = dataView.single;
         // const dataViewcategorical:DataViewCategorical=dataView.categorical;
         try {
             myChart.setOption(
                 {
+                    // aria: {
+                    //     show: true
+                    // },
                     tooltip: {
                         trigger: 'axis',
                         axisPointer: {            // 坐标轴指示器，坐标轴触发有效
                             type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        },
+                        textStyle: {
+                            align: 'left'
                         }
                     },
                     angleAxis: {
@@ -156,7 +161,10 @@ export class Visual implements IVisual {
                                     },
                                     coordinateSystem: 'polar',
                                     name: legend[index],
-                                    stack: "a"
+                                    stack: "a",
+                                    emphasis: {
+                                        focus: 'series'
+                                    }
                                 }
                             )
                         });

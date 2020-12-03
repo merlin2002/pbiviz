@@ -5,8 +5,8 @@ import VisualConstructorOptions = powerbiVisualsApi.extensibility.visual.VisualC
 var powerbiKey: any = "powerbi";
 var powerbi: any = window[powerbiKey];
 
-var polar91275C762EF847969B236C51745DEF81: IVisualPlugin = {
-    name: 'polar91275C762EF847969B236C51745DEF81',
+var polar91275C762EF847969B236C51745DEF81_DEBUG: IVisualPlugin = {
+    name: 'polar91275C762EF847969B236C51745DEF81_DEBUG',
     displayName: 'polar',
     class: 'Visual',
     apiVersion: '2.6.0',
@@ -23,7 +23,7 @@ var polar91275C762EF847969B236C51745DEF81: IVisualPlugin = {
 if (typeof powerbi !== "undefined") {
     powerbi.visuals = powerbi.visuals || {};
     powerbi.visuals.plugins = powerbi.visuals.plugins || {};
-    powerbi.visuals.plugins["polar91275C762EF847969B236C51745DEF81"] = polar91275C762EF847969B236C51745DEF81;
+    powerbi.visuals.plugins["polar91275C762EF847969B236C51745DEF81_DEBUG"] = polar91275C762EF847969B236C51745DEF81_DEBUG;
 }
 
-export default polar91275C762EF847969B236C51745DEF81;
+export default polar91275C762EF847969B236C51745DEF81_DEBUG;
