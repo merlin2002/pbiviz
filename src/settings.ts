@@ -57,6 +57,8 @@ export class myPropertiesSettings {
   public showtoolbox:boolean=true;
 
   public showlegend:boolean=true;
+
+  public renderer:string="svg";
   
   getthemecolor(themename: string): string {
     switch (themename) {

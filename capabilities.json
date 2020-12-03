@@ -81,16 +81,31 @@
                         ]
                     }
                 },
-                "showtoolbox":{
+                "showtoolbox": {
                     "displayName": "显示工具条",
                     "type": {
                         "bool": true
                     }
                 },
-                "showlegend":{
+                "showlegend": {
                     "displayName": "显示图例",
                     "type": {
                         "bool": true
+                    }
+                },
+                "renderer": {
+                    "displayName": "渲染方式",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Canvas",
+                                "value": "canvas"
+                            },
+                            {
+                                "displayName": "SVG",
+                                "value": "svg"
+                            }
+                        ]
                     }
                 },
                 "showAllDataPoints": {

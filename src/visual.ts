@@ -117,7 +117,7 @@ export class Visual implements IVisual {
         let colorname = this.settings.myproperties.theme;
         echarts.registerTheme(colorname, JSON.parse(this.settings.myproperties.getthemecolor(colorname)))
 
-        var myChart = ec.init(document.getElementById('echarts'), null, { renderer: 'svg' });
+        var myChart = ec.init(document.getElementById('echarts'), colorname, { renderer: this.settings.myproperties.renderer });
         // const singleDataView: DataViewSingle = dataView.single;
         // const dataViewcategorical:DataViewCategorical=dataView.categorical;
         try {
