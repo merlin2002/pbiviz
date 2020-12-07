@@ -62,6 +62,8 @@ export class myPropertiesSettings {
 
   public showlable: boolean = true;
 
+  public lableposition:string="inside";
+
   getthemecolor(themename: string): string {
     switch (themename) {
       case "infographic":
