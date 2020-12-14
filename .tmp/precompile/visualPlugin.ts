@@ -7,7 +7,7 @@ var powerbi: any = window[powerbiKey];
 
 var polar91275C762EF847969B236C51745DEF81: IVisualPlugin = {
     name: 'polar91275C762EF847969B236C51745DEF81',
-    displayName: 'polar',
+    displayName: '极坐标系下的堆叠柱状图',
     class: 'Visual',
     apiVersion: '2.6.0',
     create: (options: VisualConstructorOptions) => {
